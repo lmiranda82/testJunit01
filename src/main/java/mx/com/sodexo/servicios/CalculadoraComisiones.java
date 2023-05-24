@@ -1,5 +1,7 @@
 package mx.com.sodexo.servicios;
 
+import mx.com.sodexo.dto.Venta;
+
 public class CalculadoraComisiones {
 
 	//Solamente debe dar comision a ventas superiores al importe minimo
@@ -34,6 +36,7 @@ public class CalculadoraComisiones {
 	public double calcularComision(double importeVenta, char tipoVenta) {
 	
 		tipoVenta = Character.toUpperCase(tipoVenta);
+		
 		if(importeVenta <= 0) {
 			return -2;
 		}
@@ -49,6 +52,11 @@ public class CalculadoraComisiones {
 			return -3;
 		}
 		return -1;
+	}
+	
+	
+	public double calcularComision(Venta venta) {
+		return this.calcularComision(venta.getImporteVenta(), venta.getTipoVenta());
 	}
 
 	/*
